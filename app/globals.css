@@ -45,6 +45,45 @@
   --animate-reveal: reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   --animate-fade: fade 0.6s ease-out;
   --animate-slide-up: slide-up 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-menu-open: menu-open 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-menu-close: menu-close 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  --animate-stagger-item: stagger-item 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+
+  @keyframes menu-open {
+    from {
+      opacity: 0;
+      backdrop-filter: blur(0px);
+    }
+
+    to {
+      opacity: 1;
+      backdrop-filter: blur(20px);
+    }
+  }
+
+  @keyframes menu-close {
+    from {
+      opacity: 1;
+      backdrop-filter: blur(20px);
+    }
+
+    to {
+      opacity: 0;
+      backdrop-filter: blur(0px);
+    }
+  }
+
+  @keyframes stagger-item {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
   @keyframes reveal {
     from {
