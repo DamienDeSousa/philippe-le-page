@@ -1,26 +1,234 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@theme {
+  /* 1. Typography 2026 - Ultra-modern */
+  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-serif), ui-serif, Georgia, serif;
 
-@theme inline {
+  /* 2. Color Token Mapping */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  /* Custom 2026 colors */
+  --color-cream: #FAF9F7;
+  --color-warm: #F5F3EF;
+  --color-taupe: #C4B5A6;
+  --color-sage: #A3B18A;
+  --color-slate-deep: #1E293B;
+
+  /* Radius - More generous for 2026 */
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
+  --radius-full: 9999px;
+
+  /* 2026 Minimal Animations */
+  --animate-reveal: reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-fade: fade 0.6s ease-out;
+  --animate-slide-up: slide-up 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+
+  @keyframes reveal {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* 3. 2026 Color Palette - Warm Neutrals */
+:root {
+  /* BACKGROUND: Warm Cream */
+  --background: #FAF9F7;
+  --foreground: #1E293B;
+
+  /* CARDS: Soft White */
+  --card: #FFFFFF;
+  --card-foreground: #1E293B;
+
+  /* POPOVER */
+  --popover: #FFFFFF;
+  --popover-foreground: #1E293B;
+
+  /* PRIMARY: Warm Slate */
+  --primary: #334155;
+  --primary-foreground: #FAFAF9;
+
+  /* SECONDARY: Warm Stone */
+  --secondary: #F5F3EF;
+  --secondary-foreground: #1E293B;
+
+  /* MUTED */
+  --muted: #64748B;
+  --muted-foreground: #64748B;
+
+  /* ACCENT: Sage Green (Natural Touch) */
+  --accent: #A3B18A;
+  --accent-foreground: #1E293B;
+
+  /* DESTRUCTIVE */
+  --destructive: #DC2626;
+  --destructive-foreground: #FAFAF9;
+
+  /* BORDERS - Very Subtle */
+  --border: #E7E5E4;
+  --input: #E7E5E4;
+
+  /* RING */
+  --ring: #334155;
+
+  /* Radius - Generous for 2026 */
+  --radius: 1rem;
+}
+
+/* 4. Base Styles */
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* 2026 Typography: Light, elegant headings */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
+
+  h1 {
+    font-weight: 300;
+    letter-spacing: -0.03em;
+  }
+
+  /* Smooth text rendering */
+  p,
+  span,
+  a,
+  li {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* 5. 2026 Utility Classes */
+@layer utilities {
+
+  /* Glass Effect - More subtle for 2026 */
+  .glass {
+    backdrop-filter: blur(20px);
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .glass-subtle {
+    backdrop-filter: blur(12px);
+    background-color: rgba(250, 249, 247, 0.9);
+  }
+
+  /* 2026 Shadows - Very Soft */
+  .shadow-soft {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  }
+
+  .shadow-medium {
+    box-shadow:
+      0 4px 6px -1px rgba(0, 0, 0, 0.05),
+      0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  }
+
+  .shadow-elevated {
+    box-shadow:
+      0 10px 25px -3px rgba(0, 0, 0, 0.05),
+      0 4px 10px -4px rgba(0, 0, 0, 0.04);
+  }
+
+  /* Transitions - Ultra smooth */
+  .transition-subtle {
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .transition-medium {
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Text Styles */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Hover lift - Very subtle */
+  .hover-lift {
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-2px);
+  }
+
+  /* Focus ring - Minimal */
+  .focus-minimal:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+}
+
+/* 6. Selection Color */
+::selection {
+  background-color: rgba(163, 177, 138, 0.3);
+  color: #1E293B;
 }

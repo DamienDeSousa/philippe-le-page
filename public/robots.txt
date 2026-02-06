@@ -1,0 +1,10 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Disallow legal pages from indexing
+Disallow: /mentions-legales
+Disallow: /politique-confidentialite
+
+# Sitemap
+Sitemap: https://www.laser-medico-esthetique-prefecture.com/sitemap.xml
